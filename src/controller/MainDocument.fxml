@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane minHeight="540.0" minWidth="960.0" prefHeight="230.0" prefWidth="544.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+    <tabs>
+        <Tab text="List">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <center>
+                        <TextArea fx:id="fileListLog" editable="false" prefHeight="202.0" prefWidth="912.0" promptText="Files Will Be Listed Here" BorderPane.alignment="CENTER" />
+                    </center>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                    <top>
+                        <VBox prefHeight="160.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="598.0" spacing="20.0">
+                                    <children>
+                                        <TextField fx:id="fileListPath" alignment="CENTER" prefHeight="25.0" prefWidth="597.0" promptText="Enter Directory Path" />
+                                        <Button fx:id="fileListButton" alignment="CENTER" mnemonicParsing="false" onAction="#fileListButtonClick" text="List Files" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="61.0" prefWidth="912.0" spacing="20.0">
+                                    <children>
+                              <VBox alignment="CENTER" prefHeight="69.0" prefWidth="150.0" spacing="10.0">
+                                 <children>
+                                              <TextField fx:id="fileListExtensions" promptText="Extension Filters" />
+                                    <ToggleButton fx:id="fileListExtensionToggle" disable="true" mnemonicParsing="false" selected="true" style="-fx-background-color: #D3D3D3;" text="No Filters!" wrapText="true" />
+                                 </children>
+                              </VBox>
+                                        <ChoiceBox fx:id="fileListType" />
+                                        <ChoiceBox fx:id="fileListSort" />
+                                        <CheckBox fx:id="fileListToDisk" mnemonicParsing="false" text="Write To File" wrapText="true" />
+                                    </children>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </top>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab text="Modify">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <center>
+                        <TextArea fx:id="fileCorrectorLog" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Processing Logs Will Be Displayed Here" BorderPane.alignment="CENTER" />
+                    </center>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                    <top>
+                        <VBox prefHeight="160.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="598.0" spacing="20.0">
+                                    <children>
+                                        <TextField fx:id="fileCorrectorPath" prefHeight="25.0" prefWidth="594.0" promptText="Enter Directory Path" />
+                                        <Button fx:id="fileCorrectorButton" mnemonicParsing="false" onAction="#fileCorrectorButtonClick" text="Process Files" wrapText="true" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="53.0" prefWidth="912.0" spacing="20.0">
+                                    <children>
+                              <VBox alignment="CENTER" prefHeight="69.0" prefWidth="150.0" spacing="10.0">
+                                 <children>
+                                              <TextField fx:id="fileCorrectorExtensions" promptText="Extension Filters" />
+                                    <ToggleButton fx:id="fileCorrectorExtensionToggle" disable="true" mnemonicParsing="false" selected="true" style="-fx-background-color: #D3D3D3;" text="No Filters!" wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="156.0" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="118.0" text="Text File Only Options" textAlignment="CENTER" wrapText="true">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                              <CheckBox fx:id="fileCorrectorTrim" mnemonicParsing="false" text="Trim Terminal Spaces" wrapText="true" />
+                                              <CheckBox fx:id="fileCorrectorBlanks" mnemonicParsing="false" text="Remove Blank Lines" wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="71.0" prefWidth="165.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Rename Options" />
+                                              <ChoiceBox fx:id="fileCorrectorRename" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                                        <Label fx:id="fileCorrectorRenameExt" wrapText="true">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font></Label>
+                                    </children>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </top>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab text="Copy">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <bottom>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="598.0" spacing="30.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <TextField fx:id="fileCopyPath" prefHeight="25.0" prefWidth="534.0" promptText="Enter Destination Directory Path" />
+                                <CheckBox fx:id="fileCopyPreserveStructure" mnemonicParsing="false" text="Preserve Directory Structure" wrapText="true" />
+                                <Button fx:id="fileCopyButton" mnemonicParsing="false" onAction="#fileCopyButtonClick" text="Start Copy" />
+                            </children>
+                        </HBox>
+                    </bottom>
+                    <center>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="10000.0" spacing="50.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <TextArea fx:id="fileCopyList" prefHeight="200.0" prefWidth="200.0" promptText="Enter File List Here (Absolute Paths)" HBox.hgrow="ALWAYS" />
+                                <TextArea fx:id="fileCopyLog" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Processing Logs Will Be Displayed Here" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                    </center>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab text="Search">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <top>
+                        <HBox alignment="CENTER" prefHeight="158.0" prefWidth="912.0" spacing="20.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <TextArea fx:id="fileSearchList" prefHeight="158.0" prefWidth="300.0" promptText="Enter File List Here (Absolute Paths)" HBox.hgrow="ALWAYS" />
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <TextField fx:id="fileSearchPath" promptText="Enter Search Directory Path" />
+                                        <Button fx:id="fileSearchButton" mnemonicParsing="false" onAction="#fileSearchButtonClick" text="Search" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </top>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                    <center>
+                        <TextArea fx:id="fileSearchLog" prefHeight="200.0" prefWidth="200.0" promptText="Processing Logs Will Be Shown Here" BorderPane.alignment="CENTER">
+                            <BorderPane.margin>
+                                <Insets top="10.0" />
+                            </BorderPane.margin>
+                        </TextArea>
+                    </center>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab text="Merge">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <center>
+                        <TextArea fx:id="fileMergeLog" editable="false" prefHeight="48.0" prefWidth="912.0" promptText="Processing Logs Will Be Displayed Here" BorderPane.alignment="CENTER" />
+                    </center>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                    <top>
+                        <VBox prefHeight="170.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="598.0" spacing="20.0">
+                                    <children>
+                                        <TextField fx:id="fileMergePath" prefHeight="25.0" prefWidth="594.0" promptText="Enter Directory Path" />
+                                        <Button fx:id="fileMergeButton" mnemonicParsing="false" onAction="#fileMergeButtonClick" text="Merge Files" wrapText="true" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="62.0" prefWidth="912.0" spacing="20.0">
+                                    <children>
+                              <VBox alignment="CENTER" prefHeight="60.0" prefWidth="165.0" spacing="10.0">
+                                 <children>
+                                              <TextField fx:id="fileMergeExtensions" promptText="Extension Filters" />
+                                    <ToggleButton fx:id="fileMergeExtensionToggle" disable="true" mnemonicParsing="false" selected="true" style="-fx-background-color: #D3D3D3;" text="No Filters!" wrapText="true" />
+                                 </children>
+                              </VBox>
+                                        <ChoiceBox fx:id="fileMergeType" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                                        <CheckBox fx:id="fileMergeSegregate" mnemonicParsing="false" text="Segregate By Extension" />
+                                        <CheckBox fx:id="fileMergeComment" mnemonicParsing="false" text="Add Filename Comment" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="912.0" spacing="20.0">
+                                    <children>
+                                        <Label text="Merge Order -&gt;" />
+                                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                            <children>
+                                                <RadioButton fx:id="fileMergeSortAsc" mnemonicParsing="false" selected="true" text="Ascending" />
+                                                <RadioButton fx:id="fileMergeSortDesc" mnemonicParsing="false" text="Descending" />
+                                            </children>
+                                        </VBox>
+                                        <Label text="Sorting Parameter -&gt;" />
+                                        <ChoiceBox fx:id="fileMergeOrder" prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </top>
+                </BorderPane>
+            </content>
+        </Tab>
+        <Tab text="Help">
+            <content>
+                <BorderPane prefHeight="200.0" prefWidth="200.0">
+                    <center>
+                        <Accordion BorderPane.alignment="CENTER">
+                            <panes>
+                                <TitledPane text="File Listing">
+                                    <content>
+                                        <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="This is a simple file listing utility, much like the command line tools &quot;dir&quot; or &quot;ls&quot;&#10;&#10;Usage-&gt;&#10;&#9;Step 1: Enter the path for which you want file listing&#10;&#9;Step 2: Select listing option &quot;Absolute Path&quot; or &quot;Filename&quot;&#10;&#9;Step 3: Select sorting option &quot;Ascending&quot; or &quot;Descending&quot;&#10;&#9;Step 4: Enter extension filter (Optional)&#10;&#9;Step 5: Check &quot;Write To File&quot; if you want the list written to a file on the disk&#10;&#9;Step 6: Click on &quot;List Files&quot;&#10;&#9;&#10;Write To File:&#10;&#9;- Prefer using this option exclusively if the file list will be huge&#10;&#9;- Sorting option is not available for this option&#10;&#9;- The output file will be written under the directory specified for file listing (Details will be shown in output logs)&#10;&#10;Extension Filter:&#10;&#9;- Type in the file extensions you want to list out, in a comma separated format&#10;&#9;- For eg, &quot;txt,js,pdf&quot;" wrapText="true" />
+                                    </content>
+                                </TitledPane>
+                                <TitledPane text="Text File Corrector">
+                                    <content>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" text="Perform simple sanitary operations on files such as removing blank lines, trimming spaces from beginning/end, renaming files to upper/lower cases.&#10;&#9;&#10;Usage -&gt;&#10;&#9;Step 1: Enter the directory path which you want to process&#10;        Step 2: Enter extension filters if you want to process specific kinds of files&#10;        Step 3: Select the desired operations to be performed on your files&#10;&#9;Step 4: Click on &quot;Process Files&quot;&#10;&#9;Step 5: Check output logs below for subsequent information" wrapText="true" />
+                                    </content>
+                                </TitledPane>
+                                <TitledPane text="File Copy">
+                                    <content>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" text="Extract just the files you want from under a specific directory, and put them in another location!&#10;&#10;You can preserve the original directory structure, or just copy all files found to one destination folder!&#10;&#10;Usage -&gt;&#10;&#9;Step 1: Get the absolute paths of all the files you want&#10;&#9;Step 2: Paste the paths in the &quot;File List&quot; section&#10;&#9;Step 3: Enter the destination folder&#10;        Step 4: Check/Uncheck &quot;Preserve Directory Structure&quot; as per requirement&#10;&#9;Step 5: Click on &quot;Start Copy&quot;&#10;&#9;Step 6: Check output logs on the right for subsequent information&#10;&#9;&#10;Please note that all the directory structures will be maintained in the destination folder as found in the source files only if &quot;Preserve Directory Structure&quot; is checked before starting the copy procedure." wrapText="true" />
+                                    </content>
+                                </TitledPane>
+                                <TitledPane prefHeight="200.0" prefWidth="200.0" text="File Search">
+                                    <content>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" text="This is a simple file searching utility, much alike the default operating system search-boxes!&#10;That functionality has been borrowed to search multiple files at once if required!&#10;&#10;Use Case-&gt;&#10;&#9;Often we find that files end up in the wrong folders instead of being where they are supposed to be.&#10;&#9;This tool can come in handy if you have a lot of misplaced files and wish to arrange them properly.&#10;&#9;Be advised though, you need to have a proper file structure which the program can search against!&#10;&#9;&#10;Usage-&gt;&#10;&#9;Step 1: Enter the absolute file paths in the &quot;File List&quot; section&#10;&#9;Step 2: Enter the search directory path which needs to be searched against&#10;&#9;Step 3: Check output logs below for subsequent information&#10;&#9;&#10;Notes-&gt;&#10;&#9;- The result will be written to a file in the specified search directory (Details will be shown in output logs)" wrapText="true" />
+                                    </content>
+                                </TitledPane>
+                            </panes>
+                            <BorderPane.margin>
+                                <Insets />
+                            </BorderPane.margin>
+                        </Accordion>
+                    </center>
+                    <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                    </padding>
+                    <bottom>
+                        <HBox alignment="BOTTOM_RIGHT" prefHeight="29.0" prefWidth="912.0" spacing="2.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Label text="Made With" />
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="/Heart.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="By Rwitam" />
+                            </children>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
