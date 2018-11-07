@@ -70,11 +70,11 @@ public class FileMerge {
             });
         } else if (sortParameter.equals("Last Modified")) {
             return ((str1, str2) -> {
-                return sortOrderFactor.get() * (int) (new File(str1).lastModified() - new File(str2).lastModified());
+                return sortOrderFactor.get() * Long.signum(new File(str1).lastModified() - new File(str2).lastModified());
             });
         } else if (sortParameter.equals("Size")) {
             return ((str1, str2) -> {
-                return sortOrderFactor.get() * (int) (new File(str1).length() - new File(str2).length());
+                return sortOrderFactor.get() * Long.signum(new File(str1).length() - new File(str2).length());
             });
         }
         return null;
